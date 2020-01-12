@@ -1,0 +1,38 @@
+.login {
+    align-content: center;
+    display: flex;
+    height: 100%;
+}
+
+.btn-success {
+    background-color: #41a124;
+    border-color: transparent;
+    color: #fff;
+}
+
+.sm-card {
+    position: relative;
+    background-color: #fff;
+    border: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+    margin: auto;
+    width: 350px;
+}
+
+.sm-card .card-body .sm-logo-container {
+    text-align: center;
+}
+
+/*btn*/
+.form-group-btn {
+    margin-top: 24px;
+}
+
+.sm-login-btn {
+    width: 100%;
+}
+
+

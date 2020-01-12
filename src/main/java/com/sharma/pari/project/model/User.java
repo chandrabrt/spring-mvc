@@ -20,6 +20,9 @@ public class User {
     @Column(name = "firstname")
     private String firstname;
 
+    @Column(name = "middlename")
+    private String middlename;
+
     @Column(name = "lastname")
     private String lastname;
 

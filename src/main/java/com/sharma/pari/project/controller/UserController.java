@@ -23,7 +23,6 @@ public class UserController {
     @RequestMapping(value= {"/", "/login"}, method=RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView model = new ModelAndView();
-
         model.setViewName("user/login");
         return model;
     }
@@ -34,7 +33,6 @@ public class UserController {
         User user = new User();
         model.addObject("user", user);
         model.setViewName("user/signup");
-
         return model;
     }
 
@@ -58,7 +56,7 @@ public class UserController {
         return model;
     }
 
-    @RequestMapping(value= {"/home/home"}, method=RequestMethod.GET)
+    @RequestMapping(value= {"/home"}, method=RequestMethod.GET)
     public ModelAndView home() {
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -66,6 +64,17 @@ public class UserController {
 
         model.addObject("userName", user.getFirstname() + " " + user.getLastname());
         model.setViewName("home/home");
+        return model;
+    }
+
+    @RequestMapping(value= {"/admin"}, method=RequestMethod.GET)
+    public ModelAndView admin() {
+        ModelAndView model = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+
+        model.addObject("userName", user.getFirstname() + " " + user.getLastname());
+        model.setViewName("home/admin");
         return model;
     }
 
