@@ -1,8 +1,8 @@
 package com.sharma.pari.project.controller;
 
 import com.sharma.pari.project.model.User;
+import com.sharma.pari.project.service.PatientService;
 import com.sharma.pari.project.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -12,13 +12,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+    private final PatientService patientService;
+
+    public UserController(UserService userService, PatientService patientService) {
+        this.userService = userService;
+        this.patientService = patientService;
+    }
 
     @RequestMapping(value= {"/", "/login"}, method=RequestMethod.GET)
     public ModelAndView login() {
@@ -63,6 +69,9 @@ public class UserController {
         User user = userService.findUserByEmail(auth.getName());
 
         model.addObject("userName", user.getFirstname() + " " + user.getLastname());
+
+        Date date = new Date("2020/01/12 18:15:38");
+        model.addObject("patientName", patientService.countByAdmitDate(date));
         model.setViewName("home/home");
         return model;
     }
