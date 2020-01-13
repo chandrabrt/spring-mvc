@@ -5,24 +5,26 @@ import com.sharma.pari.project.model.User;
 import com.sharma.pari.project.repository.RoleRespository;
 import com.sharma.pari.project.repository.UserRepository;
 import com.sharma.pari.project.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
 
-@Service("userService")
+@Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private  final UserRepository userRepository;
+    private  final RoleRespository roleRespository;
+    private  final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Autowired
-    private RoleRespository roleRespository;
-
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    public UserServiceImpl(UserRepository userRepository,
+                           RoleRespository roleRespository,
+                           BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userRepository = userRepository;
+        this.roleRespository = roleRespository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Override
     public User findUserByEmail(String email) {

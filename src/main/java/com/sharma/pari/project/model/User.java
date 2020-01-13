@@ -9,7 +9,6 @@ import java.util.Set;
 @Table(name = "user")
 @Data
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
