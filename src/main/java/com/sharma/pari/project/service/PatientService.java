@@ -1,7 +1,14 @@
 package com.sharma.pari.project.service;
 
-import java.util.Date;
-
 public interface PatientService {
-    int countByAdmitDate(Date admitDate);
+    int totalDischarge();
+
+    int totalAdmit();
+
+    int totalAdmitPatient(String startDate, String endDate);
+
+    int totalDischargePatient(String startDate, String endDate);
+
+    int findAllPatientByInsuranceName(String name);
+
 }

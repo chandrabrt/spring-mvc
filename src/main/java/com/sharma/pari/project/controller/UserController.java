@@ -1,6 +1,7 @@
 package com.sharma.pari.project.controller;
 
 import com.sharma.pari.project.model.User;
+import com.sharma.pari.project.service.InsuranceService;
 import com.sharma.pari.project.service.PatientService;
 import com.sharma.pari.project.service.UserService;
 import org.springframework.security.core.Authentication;
@@ -9,10 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.Date;
 
 
 @Controller
@@ -20,10 +21,12 @@ public class UserController {
 
     private final UserService userService;
     private final PatientService patientService;
+    private final InsuranceService insuranceService;
 
-    public UserController(UserService userService, PatientService patientService) {
+    public UserController(UserService userService, PatientService patientService, InsuranceService insuranceService) {
         this.userService = userService;
         this.patientService = patientService;
+        this.insuranceService = insuranceService;
     }
 
     @RequestMapping(value= {"/", "/login"}, method=RequestMethod.GET)
@@ -62,28 +65,39 @@ public class UserController {
         return model;
     }
 
-    @RequestMapping(value= {"/home"}, method=RequestMethod.GET)
-    public ModelAndView home() {
+    @RequestMapping(value= {"/admin"}, method=RequestMethod.GET)
+    public ModelAndView admin(){
+
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
 
         model.addObject("userName", user.getFirstname() + " " + user.getLastname());
-
-        Date date = new Date("2020/01/12 18:15:38");
-        model.addObject("patientName", patientService.countByAdmitDate(date));
-        model.setViewName("home/home");
+        model.addObject("user", new User());
+        //total patient
+        model.addObject("totalAdmit", patientService.totalAdmit());
+        //total discharge patient
+        model.addObject("totalDischarge", patientService.totalDischarge());
+        //total insurance
+        model.addObject("totalInsurance", insuranceService.totalInsurance());
+        model.addObject("averageLengthOfStay", insuranceService.totalInsurance());
+        model.setViewName("home/admin");
         return model;
     }
 
-    @RequestMapping(value= {"/admin"}, method=RequestMethod.GET)
-    public ModelAndView admin() {
+    @RequestMapping(value= {"/home"}, method=RequestMethod.GET)
+    public ModelAndView home(@RequestParam(value = "startDate", defaultValue = "2020/01/01") String startDate,
+                             @RequestParam(value = "endDate", defaultValue = "2020/01/01") String endDate) {
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-
         model.addObject("userName", user.getFirstname() + " " + user.getLastname());
-        model.setViewName("home/admin");
+
+        //total patient
+        model.addObject("totalAdmitPatient", patientService.totalAdmitPatient(startDate, endDate));
+        //total discharge patient
+        model.addObject("totalDischargePatient", patientService.totalDischargePatient(startDate, endDate));
+        model.setViewName("home/home");
         return model;
     }
 

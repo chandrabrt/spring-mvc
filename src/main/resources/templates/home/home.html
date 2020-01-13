@@ -3,17 +3,228 @@
       xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5901eb7bad.js" crossorigin="anonymous"></script>
+
+    <style>
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background-color: #edf1f5;
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: 14px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+            margin-bottom: 15px;
+        }
+
+        .text-center {
+            color: #41a124;
+        }
+
+        .sm-card {
+            position: relative;
+            background-color: #fff;
+            border: none;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+            margin: auto;
+            width: 350px;
+        }
+
+        /*navbar*/
+        .fixed-top {
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            background: #ffffff;
+        }
+
+        .navbar-expand-md .navbar-nav .nav-link {
+            padding: 15px;
+        }
+
+        a.nav-link {
+            color: #41a124;
+        }
+
+        a.nav-link {
+            color: #a7a7a7;
+            font-size: 14px;
+        }
+
+        a.nav-link:hover {
+            color: #333333;
+            border-bottom: 2px solid #333333;
+        }
+
+        .nav-link.active {
+            border-bottom: 2px solid #41a124;
+            color: #41a124;
+        }
+
+
+        .navbar {
+            padding: 0 15px;
+        }
+
+        .nav-color {
+            color: #41a124;
+        }
+
+        .navbar-brand img {
+            width: 170px;
+        }
+
+        .sm-account .dropdown-menu {
+            left: unset;
+            right: 0;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-link.sm-drp-account:hover {
+            border-bottom: none;
+        }
+
+        .sm-account .dropdown-menu .dropdown-item i {
+            padding-right: 15px;
+        }
+
+        .sm-account .dropdown-menu {
+            font-size: 14px;
+        }
+
+        .sm-account .dropdown-menu .dropdown-item {
+            cursor: pointer;
+        }
+
+        .sm-account .dropdown-item.active, .sm-account .dropdown-item:active {
+            color: #fff;
+            text-decoration: none;
+            background-color: #41a124;
+        }
+
+    </style>
 </head>
 <body>
-<div class="container">
-    <h2>Hi <span th:utext="${userName}"></span>, this is the home page</h2>
-    <h2>Hi Patient::<span th:utext="${patientName}"></span></h2>
-    <a th:href="@{/logout}">Sign out</a>
+<nav class="navbar navbar-expand-md fixed-top">
+
+    <a class="navbar-brand" href="/">
+        <i class="fa fa-user-md fa-2x pl-2" aria-hidden="true"></i>
+    </a>
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon">
+      <i class="fas fa-bars"></i>
+    </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto main-nav-header">
+            <li class="nav-item">
+                <a class="text-center" style="color:#41a124; font-size: 14px; font-weight: bold">
+                    <form>
+                        <div class="form-row">
+                            <div class="col-5">
+                                <input type="date" class="form-control" id="startDate"
+                                       th:value="${#calendars.format(startDate,'yyyy-MM-dd')}" th:name="startDate">
+                            </div>
+                            <div class="col-5">
+                                <input type="date" class="form-control" id="endDate"
+                                       th:value="${#calendars.format(endDate,'yyyy-MM-dd')}" th:name="endDate"/></div>
+                            <div class="col-1">
+                                <button type="submit" class="btn btn-info">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </a>
+            </li>
+        </ul>
+        <div class="justify-content-end sm-account">
+            <div class="dropdown">
+                <a class="nav-link dropdown-toggle sm-drp-account" data-toggle="dropdown" href="#"><i
+                        class="fas fa-user-cog"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="user">
+                    <a class="dropdown-item">
+                        <i class="fas fa-user"></i><span th:utext="${userName}"></span>
+                    </a>
+                    <a class="dropdown-item" href="/admin">
+                        <i class="fa fa-lock" aria-hidden="true"></i>Admin
+                    </a>
+                    <a class="dropdown-item">
+                        <i class="fas fa-key"></i>Change password
+                    </a>
+                    <a class="dropdown-item" th:href="@{/logout}">
+                        <i class="fas fa-unlock"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row pt-5 mt-5">
+        <div class="col-md-4 col-sm-4" data-toggle="modal" data-target="#admit">
+            <div class="sm-card card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <i class="fa fa-bed fa-10x" aria-hidden="true"></i>
+                        <h2>
+                            <span>Admit(<span th:text="${totalAdmitPatient}"></span>)</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4" data-toggle="modal" data-target="#discharge">
+            <div class="sm-card card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <i class="fa fa-wheelchair fa-10x" aria-hidden="true"></i>
+                        <h2>
+                            <span>Discharge(<span th:text="${totalDischargePatient}"></span>)</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4">
+            <div class="sm-card card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <i class="fa fa-bed fa-10x" aria-hidden="true"></i>
+                        <h2>
+                            <span>Length Of Stay</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

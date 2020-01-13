@@ -2,6 +2,7 @@ package com.sharma.pari.project.model;
 
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,9 +26,14 @@ public class Patient {
     private Insurance insurance;
 
     @Column(name = "admit_date")
-    private Date admitDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String admitDate;
 
     @Column(name = "discharge_date")
-    private Date dischargeDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String dischargeDate;
+
+    @Column(name = "is_discharge")
+    private Boolean isDischarge=false;
 
 }

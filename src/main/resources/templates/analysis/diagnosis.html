@@ -37,7 +37,6 @@
         .text-center {
             color: #41a124;
         }
-
         .sm-card {
             position: relative;
             background-color: #fff;
@@ -64,7 +63,7 @@
             padding: 15px;
         }
 
-        a.nav-link {
+        a.nav-link{
             color: #41a124;
         }
 
@@ -87,8 +86,7 @@
         .navbar {
             padding: 0 15px;
         }
-
-        .nav-color {
+        .nav-color{
             color: #41a124;
         }
 
@@ -102,11 +100,11 @@
             box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
         }
 
-        .nav-link.sm-drp-account:hover {
+        .nav-link.sm-drp-account:hover{
             border-bottom: none;
         }
 
-        .sm-account .dropdown-menu .dropdown-item i {
+        .sm-account .dropdown-menu .dropdown-item i{
             padding-right: 15px;
         }
 
@@ -114,11 +112,11 @@
             font-size: 14px;
         }
 
-        .sm-account .dropdown-menu .dropdown-item {
+        .sm-account .dropdown-menu .dropdown-item{
             cursor: pointer;
         }
 
-        .sm-account .dropdown-item.active, .sm-account .dropdown-item:active {
+        .sm-account .dropdown-item.active,.sm-account .dropdown-item:active {
             color: #fff;
             text-decoration: none;
             background-color: #41a124;
@@ -128,7 +126,8 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md fixed-top">
-    <a class="navbar-brand" href="/home">
+
+    <a class="navbar-brand" href="/admin">
         <!--        <img class="img-fluid sm-logo" src="" alt="eSewa">-->
         <i class="fa fa-user-md fa-2x pl-2" aria-hidden="true"></i>
     </a>
@@ -142,7 +141,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto main-nav-header">
             <li class="nav-item">
-                <a class="nav-link" href="/home" style="color:#41a124; font-size: 14px; font-weight: bold">Home</a>
+                <a class="nav-link" style="color:#41a124; font-size: 14px; font-weight: bold">Home</a>
             </li>
         </ul>
         <div class="justify-content-end sm-account">
@@ -171,110 +170,40 @@
 
 <div class="container-fluid">
     <div class="row pt-5 mt-5">
-        <div class="col-md-4 col-sm-4" data-toggle="modal" data-target="#admit">
+        <div class="col-md-2 col-sm-2">
+        </div>
+
+        <div class="col-md-4 col-sm-4 mt-3">
             <div class="sm-card card">
                 <div class="card-body">
                     <div class="text-center">
-                        <i class="fa fa-bed fa-10x" aria-hidden="true"></i>
-                        <h2>
-                            <span>Admit(<span th:text="${totalAdmit}"></span>)</span>
+                        <h5>
+                            <span>Most common diagnosed disease</span>
+                        </h5>
+                        <i class="fa fa-stethoscope fa-10x" aria-hidden="true"></i>
+                        <h2 class="mt-1">
+                            <span>PAIN</span>
                         </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 col-sm-4" data-toggle="modal" data-target="#discharge">
-            <div class="sm-card card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <i class="fa fa-wheelchair fa-10x" aria-hidden="true"></i>
-                        <h2>
-                            <span>Discharge(<span th:text="${totalDischarge}"></span>)</span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 col-sm-4">
-            <div class="sm-card card">
-                <div class="card-body">
-                    <div class="text-center">
-                          <span class="fa-stack fa-5x">
-                          <i class="fa fa-circle-thin fa-stack-2x"></i>
-                          <i class="fa fa-heartbeat fa-stack-1x"></i>
-                        </span>
-                        <h2>
-                            <span>Census</span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row mt-3">
-        <div class="col-md-4 col-sm-4">
-            <a href="/admin/insurance" style="text-decoration: none">
-                <div class="sm-card card">
-                    <div class="card-body">
-                        <div class="text-center">
-                       <span class="fa-stack fa-5x">
-                          <i class="fa fa-circle-thin fa-stack-2x"></i>
-                          <i class="fa fa-child fa-stack-1x"></i>
-                        </span>
-                            <h2>
-                                <span>Insurance(<span th:text="${totalInsurance}"></span>)</span>
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-4 col-sm-4">
-            <div class="sm-card card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <span class="fa-stack fa-5x">
-                          <i class="fa fa-circle-thin fa-stack-2x"></i>
-                          <i class="fa fa-hospital-o fa-stack-1x"></i>
-                        </span>
-                        <h2>
-                            <span>Demoraphics</span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 col-sm-4">
-            <div class="sm-card card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <i class="fa fa-bed fa-10x" aria-hidden="true"></i>
-                        <h3>
-                            <span>Avg. Length Of Stay(<span th:text="${totalInsurance}"></span>)</span>
-
-                        </h3>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4 col-sm-4 mt-3">
-            <a href="/admin/diagnosis" style="text-decoration: none">
-                <div class="sm-card card">
-                    <div class="card-body">
-                        <div class="text-center">
-                            <i class="fa fa-stethoscope fa-10x" aria-hidden="true"></i>
-                            <h2>
-                                <span>Diagnosis</span>
-                            </h2>
-                        </div>
+            <div class="sm-card card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h5>
+                            <span>Least common diagnosed disease</span>
+                        </h5>
+                        <i class="fa fa-stethoscope fa-10x" aria-hidden="true"></i>
+                        <h2 class="mt-1">
+                            <span>Allergies</span>
+                        </h2>
                     </div>
                 </div>
-            </a>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2">
         </div>
     </div>
 </div>
