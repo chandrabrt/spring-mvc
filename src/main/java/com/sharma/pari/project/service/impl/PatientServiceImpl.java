@@ -1,9 +1,13 @@
 package com.sharma.pari.project.service.impl;
 
 import com.sharma.pari.project.repository.PatientRepository;
+import com.sharma.pari.project.resource.PatientDisease;
+import com.sharma.pari.project.resource.Province;
 import com.sharma.pari.project.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -38,6 +42,16 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public int findAllPatientByInsuranceName(String name) {
         return patientRepository.findAllPatientByInsuranceName(name);
+    }
+
+    @Override
+    public int totalAdmitPatient(Province province) {
+        return patientRepository.totalAdmitPatient(province);
+    }
+
+    @Override
+    public List<PatientDisease> commonDisease() {
+        return patientRepository.commonDisease();
     }
 
 }
