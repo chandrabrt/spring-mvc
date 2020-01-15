@@ -172,19 +172,21 @@
 <div class="container-fluid">
     <div class="row pt-5 mt-5">
         <div class="col-md-4 col-sm-4" data-toggle="modal" data-target="#admit">
-            <div class="sm-card card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <i class="fa fa-bed fa-10x" aria-hidden="true"></i>
-                        <h2>
-                            <span>Admit(<span th:text="${totalAdmit}"></span>)</span>
-                        </h2>
+            <a th:href="@{/admin/admit}" style="text-decoration: none">
+                <div class="sm-card card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <i class="fa fa-bed fa-10x" aria-hidden="true"></i>
+                            <h2>
+                                <span>Admit(<span th:text="${totalAdmit}"></span>)</span>
+                            </h2>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
-
         <div class="col-md-4 col-sm-4" data-toggle="modal" data-target="#discharge">
+            <a th:href="@{/admin/discharge}" style="text-decoration: none">
             <div class="sm-card card">
                 <div class="card-body">
                     <div class="text-center">
@@ -195,6 +197,7 @@
                     </div>
                 </div>
             </div>
+            </a>
         </div>
         <div class="col-md-4 col-sm-4">
             <a href="/admin/insurance" style="text-decoration: none">

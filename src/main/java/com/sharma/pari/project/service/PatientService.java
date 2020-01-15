@@ -1,10 +1,12 @@
 package com.sharma.pari.project.service;
 
+import com.sharma.pari.project.model.Patient;
 import com.sharma.pari.project.resource.PatientDisease;
+import com.sharma.pari.project.resource.PatientDto;
 import com.sharma.pari.project.resource.Province;
 
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 public interface PatientService {
     int totalDischarge();
@@ -20,5 +22,15 @@ public interface PatientService {
     int totalAdmitPatient(Province province);
 
     List<PatientDisease> commonDisease();
+
+    void addPatient(PatientDto patient);
+
+    List<Patient> findAllPatient();
+
+    Patient findById(int id);
+
+    void updatePatient(Patient patient);
+
+
 
 }

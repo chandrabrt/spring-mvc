@@ -6,6 +6,7 @@ import com.sharma.pari.project.resource.Province;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Date;
 import java.util.List;
 
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
@@ -31,6 +32,6 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
     @Query("select new com.sharma.pari.project.resource.PatientDisease(p.disease.id, p.disease.name, count(p.disease.id) as cnt) FROM Patient p group by  p.disease.id order by cnt DESC")
     List<PatientDisease> commonDisease();
 
-
+    Patient findById(int id);
 
 }
