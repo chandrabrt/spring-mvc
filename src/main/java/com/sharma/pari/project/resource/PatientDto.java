@@ -1,42 +1,27 @@
-package com.sharma.pari.project.model;
-
+package com.sharma.pari.project.resource;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sharma.pari.project.resource.Province;
+import com.sharma.pari.project.model.Disease;
+import com.sharma.pari.project.model.Insurance;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
-import java.util.Date;
-
-@Entity
-@Table(name="patient")
 @Data
 @JsonIgnoreProperties(value = "true")
-public class Patient {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "patient_id")
-    private int id;
+public class PatientDto {
 
-    @Column(name = "fullname")
     private String fullName;
 
-    @ManyToOne
     private Disease disease;
 
-    @ManyToOne
     private Insurance insurance;
 
-    @Column(name = "admit_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String admitDate;
 
-    @Column(name = "discharge_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String dischargeDate;
 
-    @Column(name = "is_discharge")
     private Boolean isDischarge=false;
 
     private Province province;
