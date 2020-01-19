@@ -5,7 +5,6 @@ import com.sharma.pari.project.resource.PatientDisease;
 import com.sharma.pari.project.resource.PatientDto;
 import com.sharma.pari.project.resource.Province;
 
-import java.util.Date;
 import java.util.List;
 
 public interface PatientService {
@@ -27,9 +26,14 @@ public interface PatientService {
 
     List<Patient> findAllPatient();
 
+    List<Patient>  findAllDischargePatient();
+
     Patient findById(int id);
 
-    void updatePatient(Patient patient);
+    void updatePatient(Patient patient) throws Exception;
+
+    int averageLengthOfStay();
+
 
 
 

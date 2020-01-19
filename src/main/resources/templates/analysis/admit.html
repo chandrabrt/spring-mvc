@@ -1,3 +1,251 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:th="http://www.thymeleaf.org" lang="en">-->
+<!--<head>-->
+<!--    <title>Home</title>-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"-->
+<!--          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+<!--    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"-->
+<!--            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"-->
+<!--            crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"-->
+<!--            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"-->
+<!--            crossorigin="anonymous"></script>-->
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"-->
+<!--            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"-->
+<!--            crossorigin="anonymous"></script>-->
+<!--    <script src="https://kit.fontawesome.com/5901eb7bad.js" crossorigin="anonymous"></script>-->
+
+<!--    <script src="https://code.highcharts.com/highcharts.js"></script>-->
+<!--    <script src="https://code.highcharts.com/modules/exporting.js"></script>-->
+
+<!--    <style>-->
+
+<!--        html, body {-->
+<!--            height: 100%;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            background-color: #edf1f5;-->
+<!--            font-family: 'Lexend Deca', sans-serif;-->
+<!--            font-size: 14px;-->
+<!--        }-->
+
+<!--        .card {-->
+<!--            border: none;-->
+<!--            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);-->
+<!--            margin-bottom: 15px;-->
+<!--        }-->
+
+<!--        .text-center {-->
+<!--            color: #41a124;-->
+<!--        }-->
+
+<!--        .sm-card {-->
+<!--            position: relative;-->
+<!--            background-color: #fff;-->
+<!--            border: none;-->
+<!--            -webkit-border-radius: 4px;-->
+<!--            -moz-border-radius: 4px;-->
+<!--            border-radius: 4px;-->
+<!--            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);-->
+<!--            margin: auto;-->
+<!--            width: 350px;-->
+<!--        }-->
+
+<!--        /*navbar*/-->
+<!--        .fixed-top {-->
+<!--            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);-->
+<!--            position: fixed;-->
+<!--            top: 0;-->
+<!--            right: 0;-->
+<!--            left: 0;-->
+<!--            background: #ffffff;-->
+<!--        }-->
+
+<!--        .navbar-expand-md .navbar-nav .nav-link {-->
+<!--            padding: 15px;-->
+<!--        }-->
+
+<!--        a.nav-link {-->
+<!--            color: #41a124;-->
+<!--        }-->
+
+<!--        a.nav-link {-->
+<!--            color: #a7a7a7;-->
+<!--            font-size: 14px;-->
+<!--        }-->
+
+<!--        a.nav-link:hover {-->
+<!--            color: #333333;-->
+<!--            border-bottom: 2px solid #333333;-->
+<!--        }-->
+
+<!--        .nav-link.active {-->
+<!--            border-bottom: 2px solid #41a124;-->
+<!--            color: #41a124;-->
+<!--        }-->
+
+
+<!--        .navbar {-->
+<!--            padding: 0 15px;-->
+<!--        }-->
+
+<!--        .nav-color {-->
+<!--            color: #41a124;-->
+<!--        }-->
+
+<!--        .navbar-brand img {-->
+<!--            width: 170px;-->
+<!--        }-->
+
+<!--        .sm-account .dropdown-menu {-->
+<!--            left: unset;-->
+<!--            right: 0;-->
+<!--            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);-->
+<!--        }-->
+
+<!--        .nav-link.sm-drp-account:hover {-->
+<!--            border-bottom: none;-->
+<!--        }-->
+
+<!--        .sm-account .dropdown-menu .dropdown-item i {-->
+<!--            padding-right: 15px;-->
+<!--        }-->
+
+<!--        .sm-account .dropdown-menu {-->
+<!--            font-size: 14px;-->
+<!--        }-->
+
+<!--        .sm-account .dropdown-menu .dropdown-item {-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .sm-account .dropdown-item.active, .sm-account .dropdown-item:active {-->
+<!--            color: #fff;-->
+<!--            text-decoration: none;-->
+<!--            background-color: #41a124;-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav class="navbar navbar-expand-md fixed-top">-->
+
+<!--    <a class="navbar-brand" href="/admin">-->
+<!--        &lt;!&ndash;        <img class="img-fluid sm-logo" src="" alt="eSewa">&ndash;&gt;-->
+<!--        <i class="fa fa-user-md fa-2x pl-2" aria-hidden="true"></i>-->
+<!--    </a>-->
+<!--    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse"-->
+<!--            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--    <span class="navbar-toggler-icon">-->
+<!--      <i class="fas fa-bars"></i>-->
+<!--    </span>-->
+<!--    </button>-->
+
+<!--    <div class="collapse navbar-collapse" id="navbarCollapse">-->
+<!--        <ul class="navbar-nav mr-auto main-nav-header">-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" style="color:#41a124; font-size: 14px; font-weight: bold">Home</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--        <div class="justify-content-end sm-account">-->
+<!--            <div class="dropdown">-->
+<!--                <a class="nav-link dropdown-toggle sm-drp-account" data-toggle="dropdown" href="#"><i-->
+<!--                        class="fas fa-user-cog"></i>-->
+<!--                </a>-->
+<!--                <div class="dropdown-menu" aria-labelledby="user">-->
+<!--                    <a class="dropdown-item">-->
+<!--                        <i class="fas fa-user"></i><span th:utext="${userName}"></span>-->
+<!--                    </a>-->
+<!--                    <a class="dropdown-item" href="/admin">-->
+<!--                        <i class="fa fa-lock" aria-hidden="true"></i>Admin-->
+<!--                    </a>-->
+<!--                    <a class="dropdown-item">-->
+<!--                        <i class="fas fa-key"></i>Change password-->
+<!--                    </a>-->
+<!--                    <a class="dropdown-item" th:href="@{/logout}">-->
+<!--                        <i class="fas fa-unlock"></i> Logout-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--<div class="container-fluid">-->
+<!--    <div class="row pt-5 mt-5">-->
+
+<!--        <div class="col-md-4 col-sm-4">-->
+<!--        </div>-->
+
+<!--        <div class="col-md-4 col-sm-4">-->
+<!--            <form role="form" method="POST" th:action="@{/admin/admit}" th:object="${patient}">-->
+<!--                <div class="alert alert-success" role="alert" th:if="${msg}" th:utext="${msg}">-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="fullname" class="sr-only">Full Name</label>-->
+<!--                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">-->
+<!--                        <input type="text" th:field="*{fullName}" class="form-control" id="fullname"-->
+<!--                               placeholder="Full Name" required autofocus>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">-->
+<!--                        <input type="date" class="form-control" id="admitDate"-->
+<!--                               th:value="${#calendars.format(admitDate,'yyyy-MM-dd')}" th:name="admitDate">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="province">Choose Province</label>-->
+<!--                    <select class="form-control selectpicker" th:field="*{province}" id="province">-->
+<!--                        <option value="">Nothing selected</option>-->
+<!--                        <option th:each="province : ${T(com.sharma.pari.project.resource.Province).values()}"-->
+<!--                                th:value="${province}"-->
+<!--                                th:text="${province}">-->
+<!--                        </option>-->
+
+<!--                    </select>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="province">Choose Disease</label>-->
+<!--                    <select class="form-control selectpicker" th:field="*{disease}" id="diseases">-->
+<!--                        <option value="">Nothing selected</option>-->
+<!--                        <option th:each="disease : ${diseases}"-->
+<!--                                th:value="${disease.id}"-->
+<!--                                th:text="${disease.name}">pizza-->
+<!--                        </option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="province">Choose Insurance</label>-->
+<!--                    <select class="form-control selectpicker" th:field="*{insurance}" id="insurances">-->
+<!--                        <option value="">Nothing selected</option>-->
+<!--                        <option th:each="insurance : ${insurances}"-->
+<!--                                th:value="${insurance.id}"-->
+<!--                                th:text="${insurance.name}">pizza-->
+<!--                        </option>-->
+
+<!--                    </select>-->
+<!--                </div>-->
+<!--                <div class="form-group-btn">-->
+<!--                    <button class="btn btn-success btn-block sm-login-btn" type="submit"><i-->
+<!--                            class="fa fa-user-plus"></i> Add Patient-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+
+<!--        <div class="col-md-4 col-sm-4">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" lang="en">
@@ -176,73 +424,47 @@
 <div class="container-fluid">
     <div class="row pt-5 mt-5">
 
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-2 col-sm-2">
         </div>
 
-        <div class="col-md-4 col-sm-4">
-            <form role="form" method="POST" th:action="@{/admin/admit}" th:object="${patient}">
-                <div class="alert alert-success" role="alert" th:if="${msg}" th:utext="${msg}">
-                </div>
+        <div class="col-md-8 col-sm-8">
 
-                <div class="form-group">
-                    <label for="fullname" class="sr-only">Full Name</label>
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <input type="text" th:field="*{fullName}" class="form-control" id="fullname"
-                               placeholder="Full Name" required autofocus>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <input type="date" class="form-control" id="admitDate"
-                               th:value="${#calendars.format(admitDate,'yyyy-MM-dd')}" th:name="admitDate">
-                    </div>
-                </div>
+            </button>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Admitted Date</th>
+                    <th>Province</th>
+                    <th>Is Discharge</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="patient: ${patients}">
+                    <td th:text="${patient.fullName}"></td>
+                    <td th:text="${patient.admitDate}"></td>
+                    <td th:text="${patient.province}"></td>
+                    <td th:text="${patient.isDischarge}"></td>
+                    <td th:value="${patient.id}">
+                        <a th:href="@{/admin/discharge/{id}(id = ${patient.id})}">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
 
-                <div class="form-group">
-                    <label for="province">Choose Province</label>
-                    <select class="form-control selectpicker" th:field="*{province}" id="province">
-                        <option value="">Nothing selected</option>
-                        <option th:each="province : ${T(com.sharma.pari.project.resource.Province).values()}"
-                                th:value="${province}"
-                                th:text="${province}">
-                        </option>
-
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="province">Choose Disease</label>
-                    <select class="form-control selectpicker" th:field="*{disease}" id="diseases">
-                        <option value="">Nothing selected</option>
-                        <option th:each="disease : ${diseases}"
-                                th:value="${disease.id}"
-                                th:text="${disease.name}">pizza
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="province">Choose Insurance</label>
-                    <select class="form-control selectpicker" th:field="*{insurance}" id="insurances">
-                        <option value="">Nothing selected</option>
-                        <option th:each="insurance : ${insurances}"
-                                th:value="${insurance.id}"
-                                th:text="${insurance.name}">pizza
-                        </option>
-
-                    </select>
-                </div>
-                <div class="form-group-btn">
-                    <button class="btn btn-success btn-block sm-login-btn" type="submit"><i
-                            class="fa fa-user-plus"></i> Add Patient
-                    </button>
-                </div>
-            </form>
         </div>
 
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-2 col-sm-2">
+            <a th:href="@{/admin/admit/patient}"
+               class="btn btn-success sm-login-btn" type="submit"><i
+                    class="fa fa-user-plus"></i> Add Patient</a>
         </div>
     </div>
 </div>
 </body>
 </html>
+
 
