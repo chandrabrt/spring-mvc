@@ -12,6 +12,7 @@ import com.sharma.pari.project.resource.Province;
 import com.sharma.pari.project.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -73,11 +74,21 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void updatePatient(Patient patient) {
-        patient.setIsDischarge(true);
-        patient.setInsurance(patientRepository.findById(patient.getId()).getInsurance());
-        patient.setDisease(patientRepository.findById(patient.getId()).getDisease());
-        patientRepository.save(patient);
+    public void updatePatient(Patient patient) throws Exception {
+        if (StringUtils.isEmpty(patient.getDischargeDate())){
+            patient.setIsDischarge(false);
+        }else {
+            patient.setIsDischarge(true);
+            patient.setInsurance(patientRepository.findById(patient.getId()).getInsurance());
+            patient.setDisease(patientRepository.findById(patient.getId()).getDisease());
+            patientRepository.save(patient);
+        }
+
+    }
+
+    @Override
+    public int averageLengthOfStay() {
+        return patientRepository.averageLengthOfStay();
     }
 
     private Patient convertToPatient(PatientDto patientDto) {
@@ -95,6 +106,11 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public List<Patient> findAllPatient() {
         return patientRepository.findAll();
+    }
+
+    @Override
+    public List<Patient>  findAllDischargePatient() {
+        return patientRepository.findAllDischargePatient();
     }
 
     @Override

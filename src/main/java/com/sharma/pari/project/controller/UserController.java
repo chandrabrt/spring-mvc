@@ -97,6 +97,8 @@ public class UserController {
         model.addObject("totalAdmitPatient", patientService.totalAdmitPatient(startDate, endDate));
         //total discharge patient
         model.addObject("totalDischargePatient", patientService.totalDischargePatient(startDate, endDate));
+
+        model.addObject("averageLengthOfStay", patientService.averageLengthOfStay());
         model.setViewName("home/home");
         return model;
     }

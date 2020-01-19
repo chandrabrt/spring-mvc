@@ -34,4 +34,9 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
 
     Patient findById(int id);
 
+    @Query("select p from Patient p where p.isDischarge = true")
+    List<Patient> findAllDischargePatient();
+
+    int averageLengthOfStay();
+
 }
