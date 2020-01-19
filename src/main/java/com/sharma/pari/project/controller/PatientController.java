@@ -15,10 +15,9 @@ import com.sharma.pari.project.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -84,7 +83,7 @@ public class PatientController {
         return model;
     }
 
-    @RequestMapping(value= {"/admin/discharge"}, method=RequestMethod.GET)
+    @RequestMapping(value = {"/admin/discharge"}, method = RequestMethod.GET)
     public ModelAndView getDischarge() {
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -96,46 +95,61 @@ public class PatientController {
         return model;
     }
 
-    @RequestMapping(value= {"/admin/discharge/{id}"}, method=RequestMethod.POST)
-    public ModelAndView updatePatient(@Valid Patient patient, @PathVariable("id") int id, BindingResult bindingResult) {
+    @GetMapping("admin/discharge/{id}")
+    public String showUpdateForm(@PathVariable("id") int id, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+
+        model.addAttribute("userName", user.getFirstname() + " " + user.getLastname());
+
+        Patient patient = patientService.findById(id);
+        model.addAttribute("patient", patient);
+        return "analysis/update";
+    }
+
+    @PostMapping(value = {"/admin/discharge/{id}"})
+    public ModelAndView updatePatient(@PathVariable("id") int id, @Valid Patient patient, BindingResult bindingResult) {
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        if(bindingResult.hasErrors()) {
-            model.setViewName("analysis/discharge");
-        } else {
-            patient = patientService.findById(id);
-            patientService.updatePatient(patient);
-            model.addObject("msg", "Patient has been added successfully!");
-            model.addObject("patient", new Patient());
-            model.addObject("userName", user.getFirstname() + " " + user.getLastname());
-            model.setViewName("analysis/discharge");
+
+        if (bindingResult.hasErrors()) {
+            patient.setId(id);
+            model.setViewName("analysis/update");
         }
+
+        patientService.updatePatient(patient);
+        model.addObject("patients", patientService.findAllPatient());
+        model.addObject("userName", user.getFirstname() + " " + user.getLastname());
+        model.addObject("msg", "Patient has been updated successfully!");
+        model.setViewName("analysis/admit");
         return model;
     }
 
-    @RequestMapping(value= {"/admin/admit"}, method=RequestMethod.GET)
+    @RequestMapping(value = {"/admin/admit"}, method = RequestMethod.GET)
     public ModelAndView signup() {
+
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        Patient patient = new Patient();
-        model.addObject("patient", patient);
-        model.addObject("userName", user.getFirstname() + " " + user.getLastname());
+        List<Patient> patients = patientService.findAllPatient();
         List<Disease> diseases = diseaseRepository.findAll();
         List<Insurance> insurances = insuranceRepository.findAllInsurance();
+
+        model.addObject("patients", patients);
+        model.addObject("userName", user.getFirstname() + " " + user.getLastname());
         model.addObject("diseases", diseases);
         model.addObject("insurances", insurances);
         model.setViewName("analysis/admit");
         return model;
     }
 
-    @RequestMapping(value= {"/admin/admit"}, method=RequestMethod.POST)
+    @RequestMapping(value = {"/admin/admit"}, method = RequestMethod.POST)
     public ModelAndView createUser(@Valid PatientDto patientDto, BindingResult bindingResult) {
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             model.setViewName("analysis/admit");
         } else {
             List<Disease> diseases = diseaseRepository.findAll();
@@ -151,8 +165,7 @@ public class PatientController {
         return model;
     }
 
-    public static<T> List<T> reverseList(List<T> list)
-    {
+    public static <T> List<T> reverseList(List<T> list) {
         List<T> reverse = new ArrayList<>(list);
         Collections.reverse(reverse);
         return reverse;

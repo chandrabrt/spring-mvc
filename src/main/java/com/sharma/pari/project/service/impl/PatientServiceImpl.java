@@ -70,13 +70,14 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public void addPatient(PatientDto patientDto) {
         patientRepository.save(convertToPatient(patientDto));
-        System.out.println("Save");
     }
 
     @Override
     public void updatePatient(Patient patient) {
+        patient.setIsDischarge(true);
+        patient.setInsurance(patientRepository.findById(patient.getId()).getInsurance());
+        patient.setDisease(patientRepository.findById(patient.getId()).getDisease());
         patientRepository.save(patient);
-        System.out.println("Save");
     }
 
     private Patient convertToPatient(PatientDto patientDto) {
@@ -100,6 +101,8 @@ public class PatientServiceImpl implements PatientService {
     public Patient findById(int id) {
         return patientRepository.findById(id);
     }
+
+
 
 
 }
