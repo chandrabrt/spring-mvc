@@ -147,7 +147,6 @@ public class PatientController {
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-//        List<Patient> patients = patientService.findAllPatient();
         List<Disease> diseases = diseaseRepository.findAll();
         List<Insurance> insurances = insuranceRepository.findAllInsurance();
 

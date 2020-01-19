@@ -186,7 +186,8 @@
                     <th>Full Name</th>
                     <th>Admitted Date</th>
                     <th>Province</th>
-                    <th>Is Discharge</th>
+                    <th>Disease</th>
+                    <th>Insurance</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -194,7 +195,8 @@
                     <td th:text="${patient.fullName}"></td>
                     <td th:text="${patient.admitDate}"></td>
                     <td th:text="${patient.province}"></td>
-                    <td th:text="${patient.isDischarge}"></td>
+                    <td th:if="${patient.disease}" th:text="${patient.disease.name}"></td>
+                    <td th:if="${patient.insurance}" th:text="${patient.insurance.name}"></td>
                 </tr>
                 </tbody>
             </table>
