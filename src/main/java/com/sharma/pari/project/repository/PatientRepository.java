@@ -6,7 +6,6 @@ import com.sharma.pari.project.resource.Province;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.Date;
 import java.util.List;
 
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
@@ -36,7 +35,4 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
 
     @Query("select p from Patient p where p.isDischarge = true")
     List<Patient> findAllDischargePatient();
-
-    int averageLengthOfStay();
-
 }

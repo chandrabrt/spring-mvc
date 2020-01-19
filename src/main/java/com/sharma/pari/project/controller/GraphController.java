@@ -2,7 +2,6 @@ package com.sharma.pari.project.controller;
 
 import com.sharma.pari.project.model.User;
 import com.sharma.pari.project.resource.Province;
-import com.sharma.pari.project.service.InsuranceService;
 import com.sharma.pari.project.service.PatientService;
 import com.sharma.pari.project.service.UserService;
 import org.springframework.security.core.Authentication;
@@ -19,12 +18,10 @@ public class GraphController {
 
     private final UserService userService;
     private final PatientService patientService;
-    private final InsuranceService insuranceService;
 
-    public GraphController(UserService userService, PatientService patientService, InsuranceService insuranceService) {
+    public GraphController(UserService userService, PatientService patientService) {
         this.userService = userService;
         this.patientService = patientService;
-        this.insuranceService = insuranceService;
     }
 
     @GetMapping("/admin/demographics")

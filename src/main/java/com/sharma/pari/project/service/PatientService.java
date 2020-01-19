@@ -26,15 +26,10 @@ public interface PatientService {
 
     List<Patient> findAllPatient();
 
-    List<Patient>  findAllDischargePatient();
+    List<Patient> findAllDischargePatient();
 
     Patient findById(int id);
 
-    void updatePatient(Patient patient) throws Exception;
-
-    int averageLengthOfStay();
-
-
-
+    void updatePatient(Patient patient);
 
 }

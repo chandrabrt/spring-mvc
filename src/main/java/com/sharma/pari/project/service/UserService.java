@@ -4,7 +4,7 @@ import com.sharma.pari.project.model.User;
 
 public interface UserService {
 
-    public User findUserByEmail(String email);
+    User findUserByEmail(String email);
 
-    public void saveUser(User user);
+    void saveUser(User user);
 }

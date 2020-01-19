@@ -22,7 +22,7 @@ public class PatientDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String dischargeDate;
 
-    private Boolean isDischarge=false;
+    private Boolean isDischarge = false;
 
     private Province province;
 }

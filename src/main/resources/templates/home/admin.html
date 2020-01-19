@@ -123,13 +123,11 @@
             text-decoration: none;
             background-color: #41a124;
         }
-
     </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-md fixed-top">
     <a class="navbar-brand" href="/home">
-        <!--        <img class="img-fluid sm-logo" src="" alt="eSewa">-->
         <i class="fa fa-user-md fa-2x pl-2" aria-hidden="true"></i>
     </a>
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -187,16 +185,16 @@
         </div>
         <div class="col-md-4 col-sm-4" data-toggle="modal" data-target="#discharge">
             <a th:href="@{/admin/discharge}" style="text-decoration: none">
-            <div class="sm-card card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <i class="fa fa-wheelchair fa-10x" aria-hidden="true"></i>
-                        <h2>
-                            <span>Discharge(<span th:text="${totalDischarge}"></span>)</span>
-                        </h2>
+                <div class="sm-card card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <i class="fa fa-wheelchair fa-10x" aria-hidden="true"></i>
+                            <h2>
+                                <span>Discharge(<span th:text="${totalDischarge}"></span>)</span>
+                            </h2>
+                        </div>
                     </div>
                 </div>
-            </div>
             </a>
         </div>
         <div class="col-md-4 col-sm-4">
@@ -255,17 +253,6 @@
         </div>
 
         <div class="col-md-4 col-sm-4">
-            <div class="sm-card card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <i class="fa fa-bed fa-10x" aria-hidden="true"></i>
-                        <h3>
-                            <span>Avg. Length Of Stay(<span th:text="${totalInsurance}"></span>)</span>
-
-                        </h3>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

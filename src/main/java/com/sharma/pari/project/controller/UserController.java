@@ -29,14 +29,14 @@ public class UserController {
         this.insuranceService = insuranceService;
     }
 
-    @RequestMapping(value= {"/", "/login"}, method=RequestMethod.GET)
+    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView model = new ModelAndView();
         model.setViewName("user/login");
         return model;
     }
 
-    @RequestMapping(value= {"/signup"}, method=RequestMethod.GET)
+    @RequestMapping(value = {"/signup"}, method = RequestMethod.GET)
     public ModelAndView signup() {
         ModelAndView model = new ModelAndView();
         User user = new User();
@@ -45,15 +45,15 @@ public class UserController {
         return model;
     }
 
-    @RequestMapping(value= {"/signup"}, method=RequestMethod.POST)
+    @RequestMapping(value = {"/signup"}, method = RequestMethod.POST)
     public ModelAndView createUser(@Valid User user, BindingResult bindingResult) {
         ModelAndView model = new ModelAndView();
         User userExists = userService.findUserByEmail(user.getEmail());
 
-        if(userExists != null) {
+        if (userExists != null) {
             bindingResult.rejectValue("email", "error.user", "This email already exists!");
         }
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             model.setViewName("user/signup");
         } else {
             userService.saveUser(user);
@@ -65,8 +65,8 @@ public class UserController {
         return model;
     }
 
-    @RequestMapping(value= {"/admin"}, method=RequestMethod.GET)
-    public ModelAndView admin(){
+    @RequestMapping(value = {"/admin"}, method = RequestMethod.GET)
+    public ModelAndView admin() {
 
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -80,12 +80,11 @@ public class UserController {
         model.addObject("totalDischarge", patientService.totalDischarge());
         //total insurance
         model.addObject("totalInsurance", insuranceService.totalInsurance());
-        model.addObject("averageLengthOfStay", insuranceService.totalInsurance());
         model.setViewName("home/admin");
         return model;
     }
 
-    @RequestMapping(value= {"/home"}, method=RequestMethod.GET)
+    @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
     public ModelAndView home(@RequestParam(value = "startDate", defaultValue = "2020/01/01") String startDate,
                              @RequestParam(value = "endDate", defaultValue = "2020/01/01") String endDate) {
         ModelAndView model = new ModelAndView();
@@ -98,12 +97,11 @@ public class UserController {
         //total discharge patient
         model.addObject("totalDischargePatient", patientService.totalDischargePatient(startDate, endDate));
 
-        model.addObject("averageLengthOfStay", patientService.averageLengthOfStay());
         model.setViewName("home/home");
         return model;
     }
 
-    @RequestMapping(value= {"/access_denied"}, method=RequestMethod.GET)
+    @RequestMapping(value = {"/access_denied"}, method = RequestMethod.GET)
     public ModelAndView accessDenied() {
         ModelAndView model = new ModelAndView();
         model.setViewName("errors/access_denied");

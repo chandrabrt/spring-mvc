@@ -7,10 +7,9 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table(name="patient")
+@Table(name = "patient")
 @Data
 @JsonIgnoreProperties(value = "true")
 public class Patient {
@@ -37,7 +36,7 @@ public class Patient {
     private String dischargeDate;
 
     @Column(name = "is_discharge")
-    private Boolean isDischarge=false;
+    private Boolean isDischarge = false;
 
     private Province province;
 }

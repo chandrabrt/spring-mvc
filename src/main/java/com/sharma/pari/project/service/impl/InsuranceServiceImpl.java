@@ -24,6 +24,6 @@ public class InsuranceServiceImpl implements InsuranceService {
 
     @Override
     public List<Insurance> findAllInsurance() {
-            return insuranceRepository.findAllInsurance();
+        return insuranceRepository.findAllInsurance();
     }
 }

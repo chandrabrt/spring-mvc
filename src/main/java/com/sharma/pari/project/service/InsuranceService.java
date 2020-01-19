@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface InsuranceService {
     int totalInsurance();
+
     List<Insurance> findAllInsurance();
 
 }

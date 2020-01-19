@@ -133,7 +133,6 @@
 <nav class="navbar navbar-expand-md fixed-top">
 
     <a class="navbar-brand" href="/admin">
-        <!--        <img class="img-fluid sm-logo" src="" alt="eSewa">-->
         <i class="fa fa-user-md fa-2x pl-2" aria-hidden="true"></i>
     </a>
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -146,7 +145,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto main-nav-header">
             <li class="nav-item">
-                <a class="nav-link" style="color:#41a124; font-size: 14px; font-weight: bold">Home</a>
+                <a class="nav-link" href="/admin" style="color:#41a124; font-size: 14px; font-weight: bold">Home</a>
             </li>
         </ul>
         <div class="justify-content-end sm-account">
@@ -188,7 +187,6 @@
                     <th>Admitted Date</th>
                     <th>Province</th>
                     <th>Is Discharge</th>
-                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -197,11 +195,6 @@
                     <td th:text="${patient.admitDate}"></td>
                     <td th:text="${patient.province}"></td>
                     <td th:text="${patient.isDischarge}"></td>
-<!--                    <td th:value="${patient.id}">-->
-<!--                        <a th:href="@{/admin/discharge/{id}(id = ${patient.id})}">-->
-<!--                            Edit-->
-<!--                        </a>-->
-<!--                    </td>-->
                 </tr>
                 </tbody>
             </table>

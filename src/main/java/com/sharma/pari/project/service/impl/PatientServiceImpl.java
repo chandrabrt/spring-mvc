@@ -1,10 +1,6 @@
 package com.sharma.pari.project.service.impl;
 
-import com.sharma.pari.project.model.Disease;
-import com.sharma.pari.project.model.Insurance;
 import com.sharma.pari.project.model.Patient;
-import com.sharma.pari.project.repository.DiseaseRepository;
-import com.sharma.pari.project.repository.InsuranceRepository;
 import com.sharma.pari.project.repository.PatientRepository;
 import com.sharma.pari.project.resource.PatientDisease;
 import com.sharma.pari.project.resource.PatientDto;
@@ -14,23 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class PatientServiceImpl implements PatientService {
 
     private final PatientRepository patientRepository;
-    private final DiseaseRepository diseaseRepository;
-    private final InsuranceRepository insuranceRepository;
 
     @Autowired
-    public PatientServiceImpl(PatientRepository patientRepository,
-                              DiseaseRepository diseaseRepository,
-                              InsuranceRepository insuranceRepository) {
+    public PatientServiceImpl(PatientRepository patientRepository) {
         this.patientRepository = patientRepository;
-        this.diseaseRepository = diseaseRepository;
-        this.insuranceRepository = insuranceRepository;
+
     }
 
     @Override
@@ -74,21 +64,16 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void updatePatient(Patient patient) throws Exception {
-        if (StringUtils.isEmpty(patient.getDischargeDate())){
+    public void updatePatient(Patient patient) {
+        if (StringUtils.isEmpty(patient.getDischargeDate())) {
             patient.setIsDischarge(false);
-        }else {
+        } else {
             patient.setIsDischarge(true);
             patient.setInsurance(patientRepository.findById(patient.getId()).getInsurance());
             patient.setDisease(patientRepository.findById(patient.getId()).getDisease());
             patientRepository.save(patient);
         }
 
-    }
-
-    @Override
-    public int averageLengthOfStay() {
-        return patientRepository.averageLengthOfStay();
     }
 
     private Patient convertToPatient(PatientDto patientDto) {
@@ -109,7 +94,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<Patient>  findAllDischargePatient() {
+    public List<Patient> findAllDischargePatient() {
         return patientRepository.findAllDischargePatient();
     }
 
@@ -117,8 +102,6 @@ public class PatientServiceImpl implements PatientService {
     public Patient findById(int id) {
         return patientRepository.findById(id);
     }
-
-
 
 
 }
