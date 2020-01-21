@@ -12,6 +12,8 @@ import com.sharma.pari.project.resource.PatientDto;
 import com.sharma.pari.project.service.InsuranceService;
 import com.sharma.pari.project.service.PatientService;
 import com.sharma.pari.project.service.UserService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -116,7 +119,8 @@ public class PatientController {
             patient.setId(id);
             return "analysis/update";
         }
-        model.addAttribute("patients", patientService.findAllPatient());
+        patientService.updatePatient(patient);
+        model.addAttribute("patient", patientService.findAllPatient());
         model.addAttribute("userName", user.getFirstname() + " " + user.getLastname());
         model.addAttribute("msg", "Patient has been updated successfully!");
         model.addAttribute("errorMessage", "Unable to update");
@@ -124,13 +128,23 @@ public class PatientController {
     }
 
     @RequestMapping(value = {"/admin/admit"}, method = RequestMethod.GET)
-    public ModelAndView signup() {
+    public ModelAndView signup(HttpServletRequest request) {
+        int page = 0; //default page number is 0 (yes it is weird)
+        int size = 10; //default page size is 10
+
+        if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+            page = Integer.parseInt(request.getParameter("page")) - 1;
+        }
+
+        if (request.getParameter("size") != null && !request.getParameter("size").isEmpty()) {
+            size = Integer.parseInt(request.getParameter("size"));
+        }
 
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         List<Patient> patients = patientService.findAllPatient();
-        List<Disease> diseases = diseaseRepository.findAll();
+        Page<Disease> diseases = diseaseRepository.findAll(PageRequest.of(page, size));
         List<Insurance> insurances = insuranceRepository.findAllInsurance();
 
         model.addObject("patients", patients);
