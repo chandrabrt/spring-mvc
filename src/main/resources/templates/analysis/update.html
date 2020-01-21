@@ -195,7 +195,7 @@
                 <div class="form-group">
                     <label for="province">Choose Province</label>
                     <select class="form-control selectpicker" th:field="*{province}" id="province">
-                        <option value="">Nothing selected</option>
+                        <option value="">--selected--</option>
                         <option th:each="province : ${T(com.sharma.pari.project.resource.Province).values()}"
                                 th:value="${province}"
                                 th:text="${province}">
